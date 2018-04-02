@@ -34,10 +34,6 @@ namespace Kalib.Checks.Test
 
             value = " ";
             Assert.Throws<ArgumentException>(() => value.CheckWhitespace(nameof(value)));
-        }
-
-  
-
-
+        } 
     }
 }
