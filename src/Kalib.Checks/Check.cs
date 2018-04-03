@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Kalib.Checks
 {
-    public static class CheckExtensions
+    public static class Check
     {
-        public static void CheckNull<T>(this T item, string arugmentName = null)
+        public static void NotNull<T>(T item, string arugmentName = null)
         {
             if (item == null)
             {
@@ -13,18 +13,18 @@ namespace Kalib.Checks
             }
         }
 
-        public static void CheckEmpty<T>(this IReadOnlyList<T> list, string argumentName = null)
+        public static void NotEmpty<T>(IReadOnlyList<T> list, string argumentName = null)
         {
-            list.CheckNull(argumentName);
+            NotNull(list, argumentName);
             if (list.Count == 0)
             {
                 throw new ArgumentException($"collection must contain at least one item.", argumentName ?? nameof(list));
             }
         }
 
-        public static void CheckEmpty(this string value, string argumentName = null)
+        public static void NotEmpty(string value, string argumentName = null)
         {
-            value.CheckNull(argumentName);
+            NotNull(value, argumentName);
 
             if (string.IsNullOrEmpty(value))
             {
@@ -32,9 +32,9 @@ namespace Kalib.Checks
             }
         }
 
-        public static void CheckWhitespace(this string value, string argumentName = null)
+        public static void NotWhitespace(this string value, string argumentName = null)
         {
-            value.CheckNull(argumentName);
+            NotNull(value, argumentName);
 
             if (string.IsNullOrWhiteSpace(value))
             {

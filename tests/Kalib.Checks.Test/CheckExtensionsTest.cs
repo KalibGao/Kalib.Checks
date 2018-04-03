@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using Kalib.Checks;
+using Kalib.Checks.Extensions;
 
 namespace Kalib.Checks.Test
 {
@@ -10,7 +10,7 @@ namespace Kalib.Checks.Test
         public void CheckNull()
         {
             string value = null;
-            Assert.Throws<ArgumentNullException>(() => value.CheckNull(nameof(value)));
+            Assert.Throws<ArgumentNullException>(() => value.NotNull(nameof(value)));
         }
 
         [Fact]
@@ -18,10 +18,10 @@ namespace Kalib.Checks.Test
         {
 
             string value = null;
-            Assert.Throws<ArgumentNullException>(() => value.CheckEmpty(nameof(value)));
+            Assert.Throws<ArgumentNullException>(() => value.NotEmpty(nameof(value)));
 
             value = "";
-            Assert.Throws<ArgumentException>(() => value.CheckEmpty(nameof(value)));
+            Assert.Throws<ArgumentException>(() => value.NotEmpty(nameof(value)));
         }
 
 
@@ -30,10 +30,10 @@ namespace Kalib.Checks.Test
         {
 
             string value = null;
-            Assert.Throws<ArgumentNullException>(() => value.CheckEmpty(nameof(value)));
+            Assert.Throws<ArgumentNullException>(() => value.NotEmpty(nameof(value)));
 
             value = " ";
-            Assert.Throws<ArgumentException>(() => value.CheckWhitespace(nameof(value)));
+            Assert.Throws<ArgumentException>(() => value.NotWhitespace(nameof(value)));
         } 
     }
 }
